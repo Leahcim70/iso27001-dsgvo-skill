@@ -1,0 +1,19 @@
+# Python / editor artefacts
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local credentials, certificates and private key material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Local logs and secret-scan reports
+*.log
+gitleaks-report.*

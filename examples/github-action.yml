@@ -1,0 +1,28 @@
+# Beispiel: In .github/workflows/compliance-scan.yml des eigenen Projekts ablegen.
+# Bricht bei KRITISCH/HOCH oder unvollständiger Prüfung ab.
+# Scanner-Tag v1.1.0 ist keine unveränderliche SHA; in produktivem CI verifizierten Commit pinnen.
+name: Technischer Datenschutz- und Security-Vorab-Scan
+on: [pull_request]
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, aufgelöst am 2026-10-16
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          repository: Leahcim70/iso27001-dsgvo-skill
+          ref: v1.1.0 # Nach Veröffentlichung für sicherheitskritische CI durch geprüfte Commit-SHA ersetzen
+          path: .compliance-skill
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6, aufgelöst am 2026-10-16
+        with:
+          python-version: "3.12"
+      - name: Scan
+        shell: bash
+        run: |
+          python3 .compliance-skill/plugins/iso27001-dsgvo/skills/iso27001-dsgvo/scripts/scan.py . \
+            --exclude .compliance-skill --format md | tee -a "$GITHUB_STEP_SUMMARY"

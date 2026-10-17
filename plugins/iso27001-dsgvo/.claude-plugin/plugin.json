@@ -1,0 +1,10 @@
+{
+  "name": "iso27001-dsgvo",
+  "version": "1.1.0",
+  "description": "Liefert technische Hinweise und Umsetzungsvorschläge zu Datenschutz/Security mit Bezug auf DSGVO, BDSG, TDDDG und ausgewählte ISO/IEC-27001:2022-Controls; keine Konformitätsgarantie.",
+  "author": { "name": "Michael Lantzen", "url": "https://lantzen.com" },
+  "homepage": "https://github.com/Leahcim70/iso27001-dsgvo-skill",
+  "repository": "https://github.com/Leahcim70/iso27001-dsgvo-skill",
+  "license": "MIT",
+  "keywords": ["dsgvo", "gdpr", "iso27001", "security", "compliance", "privacy"]
+}
